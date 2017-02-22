@@ -28,23 +28,24 @@ console.log(myArray);
 // Version Two ----------------------------------------------------------------
 
 // array to be shuffled
-var mySecondArray = ['five','six','seven','eight'],
-// empty array to push items from ordered array into in random order
-    shuffledArray = [];
+var mySecondArray = ['five','six','seven','eight'];
 
 // shuffle function
-var otherShuffleFunction = function() {
+var otherShuffleFunction = function(originalArray) {
   // loops over array for the length of the array to be shuffled
-  for (var j = mySecondArray.length; j > 0; j--) {
+  // empty array to push items from ordered array into in random order
+  shuffledArray = [];
+  for (var j = originalArray.length; j > 0; j--) {
     // creates a random whole number between 0 and the numeric value of the current
     // last index of the array (changes since items are constantly being sliced out)
-    var y = Math.round(Math.random() * (mySecondArray.length-1));
+    var y = Math.round(Math.random() * (originalArray.length-1));
     // pushes item at the index of randomly created number into empty array
     shuffledArray.push(mySecondArray[y]);
     // removes item at the index of randomly created number from old array
-    mySecondArray.splice(y, 1);
+    originalArray.splice(y, 1);
   }
+  return shuffledArray;
 };
 
-otherShuffleFunction();
+otherShuffleFunction(mySecondArray);
 console.log(shuffledArray);
